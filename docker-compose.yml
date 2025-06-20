@@ -5,16 +5,12 @@ services:
     build: .
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
-      - your_backend_service
-    networks:
-      - proxy_net
+      - backend
 
-  your_backend_service:
-    image: your_backend_image
-    networks:
-      - proxy_net
-
-networks:
-  proxy_net:
-    driver: bridge
+  backend:
+    image: nginx:alpine
+    expose:
+      - "8480"
+    command: ["nginx", "-g", "daemon off;"]
