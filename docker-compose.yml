@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: .
+    ports:
+      - "80:80"
+    depends_on:
+      - your_backend_service
+    networks:
+      - proxy_net
+
+  your_backend_service:
+    image: your_backend_image
+    networks:
+      - proxy_net
+
+networks:
+  proxy_net:
+    driver: bridge
