@@ -12,5 +12,5 @@ services:
   backend:
     image: nginx:alpine
     expose:
-      - "8480"
+      - "8280"
     command: ["nginx", "-g", "daemon off;"]
